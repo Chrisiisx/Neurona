@@ -1,0 +1,125 @@
+{% load static %}<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Neurona{% endblock %}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CDN + Configurazione colori Neurona -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'violet-dim': '#5C0A5C',
+                        'violet': '#8B1A8B',
+                        'violet-hi': '#b832b8',
+                        'teal': '#00E5CC',
+                        'teal-dim': 'rgba(0,229,204,0.12)',
+                        'surface': '#0d0d0d',
+                        'surface2': '#141414',
+                        'text-sub': '#999',
+                        'text-muted': '#6b6b6b',
+                    },
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-dot': 'pulse-dot 2s ease-in-out infinite',
+                        'breathe': 'breathe 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-dot': {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.4', transform: 'scale(0.7)' },
+                        },
+                        'breathe': {
+                            '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(184,50,184,0.2)' },
+                            '50%': { transform: 'scale(1.05)', boxShadow: '0 0 0 20px rgba(184,50,184,0)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Stili aggiuntivi (solo quelli che Tailwind non può gestire facilmente) -->
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+            #neural-canvas { display: none; }
+        }
+        .accent-violet {
+            background: linear-gradient(120deg, #b832b8 0%, #d060d0 60%, #00E5CC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+
+    {% block head %}{% endblock %}
+</head>
+<body class="bg-black text-[#e8e8e8] overflow-x-hidden">
+
+    {% block body %}
+
+        <!-- Navbar standard (può essere sovrascritto con {% block nav %}) -->
+        {% block navbar %}
+        <nav class="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-[clamp(1.5rem,5vw,4rem)] h-16 bg-black/70 backdrop-blur-xl border-b border-violet/20">
+            <a href="/" class="flex items-center gap-2.5 no-underline">
+                <div class="w-8 h-8 bg-gradient-to-br from-violet to-violet-dim rounded-lg flex items-center justify-center text-base">⬡</div>
+                <span class="font-space font-bold text-[1.15rem] text-[#e8e8e8] tracking-[-0.02em]">Neurona</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                {% block nav_links %}
+                    <!-- Inserire qui i link di navigazione -->
+                {% endblock %}
+            </div>
+
+            <div class="flex items-center gap-3">
+                {% block nav_actions %}
+                    <a href="{% url 'login' %}" class="font-space text-[0.85rem] font-medium text-text-sub py-2 px-3.5 rounded-lg hover:text-[#e8e8e8] hover:bg-white/5 transition-colors no-underline">Accedi</a>
+                    <a href="{% url 'register' %}" class="font-space text-[0.85rem] font-semibold text-white bg-gradient-to-br from-violet-hi to-violet py-2 px-5 rounded-lg hover:opacity-90 hover:-translate-y-px transition-all no-underline whitespace-nowrap">Inizia gratis</a>
+                {% endblock %}
+            </div>
+        </nav>
+        {% endblock %}
+
+        <!-- Contenuto principale -->
+        <main class="relative z-10">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer standard -->
+            <footer class="relative z-10 border-t border-violet/20 py-10 px-[clamp(1.5rem,5vw,4rem)] flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-2.5 text-[0.82rem] text-text-muted">
+                    <span class="font-space font-bold text-[0.95rem] text-[#e8e8e8]">⬡ Neurona</span>
+                    <span class="text-[#333] mx-2">·</span>
+                    <span>MIT License · Fatto con ♥ dalla comunità</span>
+                </div>
+                <ul class="flex gap-6 list-none">
+                    <li><a href="#" class="text-[0.8rem] text-text-muted no-underline hover:text-[#e8e8e8] transition-colors">Privacy</a></li>
+                    <li><a href="#" class="text-[0.8rem] text-text-muted no-underline hover:text-[#e8e8e8] transition-colors">Docs</a></li>
+                    <li><a href="https://github.com" target="_blank" class="text-[0.8rem] text-text-muted no-underline hover:text-[#e8e8e8] transition-colors">GitHub</a></li>
+                    <li><a href="#" class="text-[0.8rem] text-text-muted no-underline hover:text-[#e8e8e8] transition-colors">Discord</a></li>
+                </ul>
+            </footer>
+        {% endblock %}
+
+    {% endblock %}
+
+    <!-- Script comuni -->
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Neurona — Finance, guided by intelligence{% endblock %}
+
+{% block background %}
+<canvas id="neural-canvas" class="fixed inset-0 z-0 pointer-events-none opacity-[0.45]"></canvas>
+{% endblock %}
+
+{% block nav-links %}
+  <li><a href="#features" class="text-[0.85rem] text-text-sub no-underline tracking-[0.02em] hover:text-[#e8e8e8] transition-colors">Features</a></li>
+  <li><a href="#how-it-works" class="text-[0.85rem] text-text-sub no-underline tracking-[0.02em] hover:text-[#e8e8e8] transition-colors">How it works</a></li>
+  <li><a href="#open-source" class="text-[0.85rem] text-text-sub no-underline tracking-[0.02em] hover:text-[#e8e8e8] transition-colors">Open Source</a></li>
+  <li><a href="https://github.com/Chrisiisx/Neurona" target="_blank" class="text-[0.85rem] text-text-sub no-underline tracking-[0.02em] hover:text-[#e8e8e8] transition-colors">GitHub ↗</a></li>
+{% endblock %}
+
+{% block nav_actions %}
+  <a href="#" class="font-space text-[0.85rem] font-medium text-text-sub py-2 px-3.5 rounded-lg hover:text-[#e8e8e8] hover:bg-white/5 transition-colors no-underline">Sign in</a>
+  <a href="#" class="font-space text-[0.85rem] font-semibold text-white bg-gradient-to-br from-violet-hi to-violet py-2 px-5 rounded-lg hover:opacity-90 hover:-translate-y-px transition-all no-underline whitespace-nowrap">Start free</a>
+{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="min-h-[100svh] flex flex-col items-center justify-center text-center px-[clamp(1.5rem,5vw,4rem)] pt-[120px] pb-20">
+  <div class="inline-flex items-center gap-1.5 bg-[#8B1A8B]/15 border border-[#8B1A8B]/40 rounded-full px-3.5 py-1 text-xs font-medium text-[#c060c0] tracking-[0.05em] uppercase mb-8">
+    <span class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse-dot"></span>
+    Open source · AI-powered · Privacy-first
+  </div>
+
+  <h1 class="font-space font-bold text-[clamp(2.8rem,7vw,6rem)] leading-[1.05] tracking-[-0.035em] max-w-[820px] mb-6">
+    Your money,<br>
+    <span class="accent-violet">analyzed with AI</span><br>
+  </h1>
+
+  <p class="text-[clamp(1rem,2vw,1.2rem)] text-text-sub max-w-[560px] leading-[1.7] mb-10">
+      Neurona combines advanced financial tracking with artificial intelligence 
+      to help you understand where your money is going—and where it could go.
+  </p>
+
+  <div class="flex gap-3.5 flex-wrap justify-center mb-14">
+    <a href="#" class="font-space text-base font-semibold text-white bg-gradient-to-br from-violet-hi to-violet py-3.5 px-8 rounded-xl shadow-[0_0_32px_rgba(139,26,139,0.35)] hover:opacity-90 hover:-translate-y-0.5 hover:shadow-[0_0_48px_rgba(139,26,139,0.5)] transition-all no-underline">Start free →</a>
+    <a href="https://github.com/Chrisiisx/Neurona" target="_blank" class="font-space text-base font-medium text-text-sub bg-transparent border border-white/10 py-3.5 px-8 rounded-xl hover:border-white/30 hover:text-[#e8e8e8] transition-all no-underline">⭐ View on GitHub</a>
+  </div>
+
+  <div class="flex gap-8 flex-wrap justify-center text-[0.8rem] text-text-muted">
+    <span class="flex items-center gap-1.5">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#6b6b6b" stroke-width="1.2"/><path d="M7 4v3.5l2 1.5" stroke="#6b6b6b" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Setup in 5 minutes
+    </span>
+    <span class="flex items-center gap-1.5">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="8" rx="1.5" stroke="#6b6b6b" stroke-width="1.2"/><path d="M5 6h4M5 8.5h2.5" stroke="#6b6b6b" stroke-width="1.1" stroke-linecap="round"/></svg>
+      No card required
+    </span>
+    <span class="flex items-center gap-1.5">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2L3 4v3.5c0 2 1.8 3.8 4 4 2.2-.2 4-2 4-4V4L7 2z" stroke="#6b6b6b" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      Your data remains yours
+    </span>
+  </div>
+</section>
+
+<!-- DASHBOARD PREVIEW -->
+<div class="relative z-10 px-[clamp(1.5rem,5vw,4rem)] pb-[100px] flex justify-center">
+  <div class="w-full max-w-[900px] bg-surface border border-violet/20 rounded-[20px] overflow-hidden shadow-[0_0_80px_rgba(139,26,139,0.2),0_40px_100px_rgba(0,0,0,0.8)]">
+    <div class="bg-surface2 border-b border-violet/20 py-3 px-4 flex items-center gap-2.5">
+      <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></span>
+      <span class="flex-1 bg-white/5 rounded-md h-6 mx-3 text-[0.72rem] text-text-muted flex items-center px-2.5">app.neurona.finance / dashboard</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] min-h-[400px]">
+      <div class="hidden md:block bg-surface2 border-r border-violet/20 p-5">
+        <div class="font-space font-bold text-base text-[#e8e8e8] mb-6 pl-1 flex items-center gap-2">⬡ Neurona</div>
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-[0.8rem] bg-violet/20 text-[#c060c0] cursor-pointer">📊 Dashboard</div>
+          <div class="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-[0.8rem] text-text-muted hover:bg-white/5 hover:text-text-sub cursor-pointer transition-colors">💸 Transactions</div>
+          <div class="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-[0.8rem] text-text-muted hover:bg-white/5 hover:text-text-sub cursor-pointer transition-colors">🎯 Goals</div>
+          <div class="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-[0.8rem] text-text-muted hover:bg-white/5 hover:text-text-sub cursor-pointer transition-colors">🤖 AI Advisor</div>
+          <div class="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-[0.8rem] text-text-muted hover:bg-white/5 hover:text-text-sub cursor-pointer transition-colors">📈 Reports</div>
+          <div class="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-[0.8rem] text-text-muted hover:bg-white/5 hover:text-text-sub cursor-pointer transition-colors">⚙️ Settings</div>
+        </div>
+      </div>
+      <div class="p-6 flex flex-col gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <div class="bg-surface2 border border-violet/20 rounded-xl p-4">
+            <div class="text-[0.72rem] text-text-muted mb-1.5">Total balance</div>
+            <div class="font-space text-[1.4rem] font-semibold text-[#e8e8e8] tracking-[-0.02em]">€ 12,480</div>
+            <div class="text-[0.72rem] mt-1 text-teal">↑ 8.2% this month</div>
+          </div>
+          <div class="bg-surface2 border border-violet/20 rounded-xl p-4">
+            <div class="text-[0.72rem] text-text-muted mb-1.5">Monthly expenses</div>
+            <div class="font-space text-[1.4rem] font-semibold text-[#e8e8e8] tracking-[-0.02em]">€ 1,740</div>
+            <div class="text-[0.72rem] mt-1 text-[#e05555]">↑ 3.1% vs average</div>
+          </div>
+          <div class="bg-surface2 border border-violet/20 rounded-xl p-4">
+            <div class="text-[0.72rem] text-text-muted mb-1.5">Net savings</div>
+            <div class="font-space text-[1.4rem] font-semibold text-[#e8e8e8] tracking-[-0.02em]">€ 680</div>
+            <div class="text-[0.72rem] mt-1 text-teal">↑ 14% vs goal</div>
+          </div>
+        </div>
+        <div class="bg-surface2 border border-violet/20 rounded-xl p-4">
+          <div class="text-[0.78rem] text-text-sub mb-3.5 font-medium">Cash flow — last 7 months</div>
+          <div class="flex items-end gap-1.5 h-20">
+            <div class="flex-1 rounded-t bg-gradient-to-t from-violet-dim to-violet opacity-80 hover:opacity-100 transition-opacity" style="height:45%"></div>
+            <div class="flex-1 rounded-t bg-gradient-to-t from-violet-dim to-violet opacity-80 hover:opacity-100 transition-opacity" style="height:62%"></div>
+            <div class="flex-1 rounded-t bg-gradient-to-t from-violet-dim to-violet opacity-80 hover:opacity-100 transition-opacity" style="height:38%"></div>
+            <div class="flex-1 rounded-t bg-gradient-to-t from-violet-dim to-violet opacity-80 hover:opacity-100 transition-opacity" style="height:70%"></div>
+            <div class="flex-1 rounded-t bg-gradient-to-t from-violet-dim to-violet opacity-80 hover:opacity-100 transition-opacity" style="height:55%"></div>
+            <div class="flex-1 rounded-t bg-gradient-to-t from-violet-dim to-violet opacity-80 hover:opacity-100 transition-opacity" style="height:80%"></div>
+            <div class="flex-1 rounded-t bg-gradient-to-t from-teal/30 to-teal opacity-80 hover:opacity-100 transition-opacity" style="height:90%"></div>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-violet/10 to-teal/5 border border-violet/30 rounded-xl p-4">
+          <div class="inline-flex items-center gap-1.5 bg-violet/25 rounded px-2 py-0.5 text-[0.65rem] font-semibold text-[#c060c0] tracking-[0.06em] uppercase mb-2">✦ AI Insight</div>
+          <p class="text-[0.82rem] text-text-sub leading-[1.5]">
+            In the last 3 months, you spent 
+            <span class="text-teal font-medium">22% more on weekends</span> at restaurants. 
+            Setting a €200/month budget for this category could save you 
+            <span class="text-teal font-medium">about €340 per year</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="relative z-10 h-px bg-gradient-to-r from-transparent via-violet/20 to-transparent mx-[clamp(1.5rem,5vw,4rem)]"></div>
+
+<!-- FEATURES -->
+<section id="features" class="relative z-10 py-[100px] px-[clamp(1.5rem,5vw,4rem)]">
+  <div class="max-w-[1100px] mx-auto">
+    <div class="mb-16">
+      <p class="text-[0.75rem] font-semibold tracking-[0.1em] uppercase text-violet-hi mb-4">Features</p>
+      <h2 class="font-space text-[clamp(1.9rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] max-w-[640px] mb-4">Everything you need. Nothing you don't.</h2>
+      <p class="text-[1.05rem] text-text-sub max-w-[520px] leading-[1.7]">From clear daily spending insights to long-term forecasts, Neurona gives you the tools to make informed financial decisions.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-violet/20 border border-violet/20 rounded-[20px] overflow-hidden">
+      <div class="bg-surface p-9 hover:bg-surface2 transition-colors">
+        <div class="w-11 h-11 rounded-[10px] bg-violet/15 border border-violet/30 flex items-center justify-center mb-5 text-xl">🧠</div>
+        <div class="font-space text-[1.05rem] font-semibold mb-2.5 tracking-[-0.01em]">Personal AI Advisor</div>
+        <p class="text-[0.88rem] text-text-muted leading-[1.65]">AI analyzes your habits and suggests concrete optimizations, not generic tips. It learns from your behavior over time.</p>
+      </div>
+      <div class="bg-surface p-9 hover:bg-surface2 transition-colors">
+        <div class="w-11 h-11 rounded-[10px] bg-violet/15 border border-violet/30 flex items-center justify-center mb-5 text-xl">📊</div>
+        <div class="font-space text-[1.05rem] font-semibold mb-2.5 tracking-[-0.01em]">Real-time dashboard</div>
+        <p class="text-[0.88rem] text-text-muted leading-[1.65]">View income, expenses, and balance with interactive charts. Every datum is updated in real-time and accessible from any device.</p>
+      </div>
+      <div class="bg-surface p-9 hover:bg-surface2 transition-colors">
+        <div class="w-11 h-11 rounded-[10px] bg-violet/15 border border-violet/30 flex items-center justify-center mb-5 text-xl">🔒</div>
+        <div class="font-space text-[1.05rem] font-semibold mb-2.5 tracking-[-0.01em]">Privacy by design</div>
+        <p class="text-[0.88rem] text-text-muted leading-[1.65]">Your data remains yours. You can fully self-host or use our infrastructure — end-to-end encrypted, never sold to third parties.</p>
+      </div>
+      <div class="bg-surface p-9 hover:bg-surface2 transition-colors">
+        <div class="w-11 h-11 rounded-[10px] bg-violet/15 border border-violet/30 flex items-center justify-center mb-5 text-xl">🎯</div>
+        <div class="font-space text-[1.05rem] font-semibold mb-2.5 tracking-[-0.01em]">Smart goals</div>
+        <p class="text-[0.88rem] text-text-muted leading-[1.65]">Set financial targets and let AI calculate the optimal path to reach them, adjusting the plan based on your income changes.</p>
+      </div>
+      <div class="bg-surface p-9 hover:bg-surface2 transition-colors">
+        <div class="w-11 h-11 rounded-[10px] bg-violet/15 border border-violet/30 flex items-center justify-center mb-5 text-xl">🔗</div>
+        <div class="font-space text-[1.05rem] font-semibold mb-2.5 tracking-[-0.01em]">Import from anywhere</div>
+        <p class="text-[0.88rem] text-text-muted leading-[1.65]">CSV, OFX, QIF, Open Banking APIs: Neurona adapts to your data sources. No vendor lock-in, no dependency.</p>
+      </div>
+      <div class="bg-surface p-9 hover:bg-surface2 transition-colors">
+        <div class="w-11 h-11 rounded-[10px] bg-violet/15 border border-violet/30 flex items-center justify-center mb-5 text-xl">⚡</div>
+        <div class="font-space text-[1.05rem] font-semibold mb-2.5 tracking-[-0.01em]">Automations & rules</div>
+        <p class="text-[0.88rem] text-text-muted leading-[1.65]">Create custom rules to auto-categorize transactions, send alerts, or export reports. Finance that works for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="relative z-10 h-px bg-gradient-to-r from-transparent via-violet/20 to-transparent mx-[clamp(1.5rem,5vw,4rem)]"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="relative z-10 py-[100px] px-[clamp(1.5rem,5vw,4rem)]">
+  <div class="max-w-[1100px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+      <div>
+        <p class="text-[0.75rem] font-semibold tracking-[0.1em] uppercase text-violet-hi mb-4">How it works</p>
+        <h2 class="font-space text-[clamp(1.9rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] max-w-[640px] mb-10">Operational in under ten minutes</h2>
+        <div class="flex flex-col">
+          <div class="step flex gap-5 py-7 border-b border-white/5 cursor-pointer first:pt-0 last:border-b-0 active">
+            <span class="font-space text-[0.75rem] font-semibold text-teal w-7 shrink-0 pt-0.5">01</span>
+            <div>
+              <div class="font-space font-semibold text-base mb-1.5 tracking-[-0.01em] text-[#e8e8e8]">Create your space</div>
+              <p class="text-[0.85rem] text-text-muted leading-[1.6]">Quick sign-up or self-host on your server. No credit card required to start.</p>
+            </div>
+          </div>
+          <div class="step flex gap-5 py-7 border-b border-white/5 cursor-pointer">
+            <span class="font-space text-[0.75rem] font-semibold text-text-muted w-7 shrink-0 pt-0.5">02</span>
+            <div>
+              <div class="font-space font-semibold text-base mb-1.5 tracking-[-0.01em]">Connect your accounts</div>
+              <p class="text-[0.85rem] text-text-muted leading-[1.6]">Import bank statements, link banks via Open Banking, or enter manually. It works either way.</p>
+            </div>
+          </div>
+          <div class="step flex gap-5 py-7 border-b border-white/5 cursor-pointer">
+            <span class="font-space text-[0.75rem] font-semibold text-text-muted w-7 shrink-0 pt-0.5">03</span>
+            <div>
+              <div class="font-space font-semibold text-base mb-1.5 tracking-[-0.01em]">AI analyzes & learns</div>
+              <p class="text-[0.85rem] text-text-muted leading-[1.6]">Neurona automatically categorizes, detects patterns, and starts building your personal financial profile.</p>
+            </div>
+          </div>
+          <div class="step flex gap-5 py-7 cursor-pointer">
+            <span class="font-space text-[0.75rem] font-semibold text-text-muted w-7 shrink-0 pt-0.5">04</span>
+            <div>
+              <div class="font-space font-semibold text-base mb-1.5 tracking-[-0.01em]">Receive actionable insights</div>
+              <p class="text-[0.85rem] text-text-muted leading-[1.6]">Not just statistics: practical tips, proactive alerts, and forecasts on where your money is going.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden md:flex bg-surface border border-violet/20 rounded-[20px] p-8 aspect-square items-center justify-center">
+        <div class="max-w-[280px] text-center">
+          <div class="w-[120px] h-[120px] rounded-full bg-[radial-gradient(circle,rgba(184,50,184,0.35)_0%,transparent_70%)] border border-[#b832b8]/40 flex items-center justify-center mx-auto mb-6 text-5xl animate-breathe">🧠</div>
+          <p class="font-space text-[0.9rem] text-text-sub">Your financial brain<br>gets smarter every day</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="relative z-10 h-px bg-gradient-to-r from-transparent via-violet/20 to-transparent mx-[clamp(1.5rem,5vw,4rem)]"></div>
+
+<!-- OPEN SOURCE -->
+<section id="open-source" class="relative z-10 py-[100px] px-[clamp(1.5rem,5vw,4rem)]">
+  <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <div>
+      <p class="text-[0.75rem] font-semibold tracking-[0.1em] uppercase text-violet-hi mb-4">Open Source</p>
+      <h2 class="font-space text-[clamp(1.9rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] max-w-[640px] mb-4">Built in public. Improved by the community.</h2>
+      <p class="text-[1.05rem] text-text-sub max-w-[520px] leading-[1.7] mb-8">Neurona is completely open source under the MIT license. You can inspect the code, contribute, fork it, or host it anywhere. No black box.</p>
+      <div class="flex gap-3 flex-wrap">
+        <a href="https://github.com/Chrisiisx/Neurona" target="_blank" class="font-space text-[0.85rem] font-semibold text-white bg-gradient-to-br from-violet-hi to-violet py-2.5 px-5 rounded-lg hover:opacity-90 hover:-translate-y-px transition-all no-underline inline-flex items-center gap-1">⭐ View on GitHub</a>
+        <a href="#" class="font-space text-[0.85rem] font-medium text-text-sub border border-white/10 py-2.5 px-5 rounded-lg hover:text-[#e8e8e8] hover:bg-white/5 transition-all no-underline">📖 Documentation</a>
+      </div>
+    </div>
+    <div class="bg-[#0a0a0a] border border-violet/20 rounded-[20px] overflow-hidden font-mono">
+      <div class="bg-surface2 border-b border-violet/20 py-2.5 px-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
+        <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
+        <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+        <span class="ml-2 text-[0.72rem] text-text-muted">neurona / docker-compose.yaml</span>
+      </div>
+      <div class="p-6 space-y-0 font-mono text-[0.8rem] leading-[2]">
+        <div><span class="text-[#555]"># Self-host Neurona in 3 commands</span></div>
+        <div>&nbsp;</div>
+        <div><span class="text-[#c678dd]">version</span><span class="text-[#555]">:</span> <span class="text-[#98c379]">'3.9'</span></div>
+        <div><span class="text-[#c678dd]">services</span><span class="text-[#555]">:</span></div>
+        <div>&nbsp; <span class="text-[#61afef]">neurona</span><span class="text-[#555]">:</span></div>
+        <div>&nbsp; &nbsp; <span class="text-[#e5c07b]">image</span><span class="text-[#555]">:</span> <span class="text-[#98c379]">ghcr.io/neurona/app:latest</span></div>
+        <div>&nbsp; &nbsp; <span class="text-[#e5c07b]">ports</span><span class="text-[#555]">:</span> <span class="text-[#555]">["</span><span class="text-teal">3000:3000</span><span class="text-[#555]">"]</span></div>
+        <div>&nbsp; &nbsp; <span class="text-[#e5c07b]">environment</span><span class="text-[#555]">:</span></div>
+        <div>&nbsp; &nbsp; &nbsp; <span class="text-[#61afef]">AI_PROVIDER</span><span class="text-[#555]">:</span> <span class="text-[#98c379]">local</span></div>
+        <div>&nbsp; &nbsp; &nbsp; <span class="text-[#61afef]">ENCRYPTION</span><span class="text-[#555]">:</span> <span class="text-teal">true</span></div>
+        <div>&nbsp;</div>
+        <div><span class="text-[#555]"># Then:</span></div>
+        <div><span class="text-[#c678dd]">$</span> <span class="text-[#98c379]">docker compose up -d</span></div>
+        <div><span class="text-teal"># ✓ Neurona running at localhost:3000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="relative z-10 h-px bg-gradient-to-r from-transparent via-violet/20 to-transparent mx-[clamp(1.5rem,5vw,4rem)]"></div>
+
+<!-- STATS -->
+{% comment %} <section class="relative z-10 py-[100px] px-[clamp(1.5rem,5vw,4rem)]">
+  <div class="max-w-[1100px] mx-auto text-center">
+    <p class="text-[0.75rem] font-semibold tracking-[0.1em] uppercase text-violet-hi mb-4">Numbers</p>
+    <h2 class="font-space text-[clamp(1.9rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] mb-2">A growing community</h2>
+    <p class="text-[1.05rem] text-text-sub max-w-[520px] mx-auto leading-[1.7] mb-16">Every week, new users and contributors join the project.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-violet/20 border border-violet/20 rounded-[20px] overflow-hidden">
+      <div class="bg-surface py-12 px-8 text-center">
+        <div class="font-space text-[clamp(2.2rem,4vw,3.5rem)] font-bold tracking-[-0.04em] bg-gradient-to-br from-violet-hi to-teal bg-clip-text text-transparent mb-2">12k+</div>
+        <div class="text-[0.85rem] text-text-muted">Active users</div>
+      </div>
+      <div class="bg-surface py-12 px-8 text-center">
+        <div class="font-space text-[clamp(2.2rem,4vw,3.5rem)] font-bold tracking-[-0.04em] bg-gradient-to-br from-violet-hi to-teal bg-clip-text text-transparent mb-2">340+</div>
+        <div class="text-[0.85rem] text-text-muted">GitHub contributors</div>
+      </div>
+      <div class="bg-surface py-12 px-8 text-center">
+        <div class="font-space text-[clamp(2.2rem,4vw,3.5rem)] font-bold tracking-[-0.04em] bg-gradient-to-br from-violet-hi to-teal bg-clip-text text-transparent mb-2">4.8★</div>
+        <div class="text-[0.85rem] text-text-muted">Average review rating</div>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+<div class="relative z-10 h-px bg-gradient-to-r from-transparent via-violet/20 to-transparent mx-[clamp(1.5rem,5vw,4rem)]"></div>
+
+<!-- CTA -->
+<section class="relative z-10 text-center overflow-hidden py-[100px] px-[clamp(1.5rem,5vw,4rem)]">
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(139,26,139,0.2)_0%,transparent_70%)] pointer-events-none"></div>
+  <div class="relative max-w-[700px] mx-auto text-center">
+    <p class="text-[0.75rem] font-semibold tracking-[0.1em] uppercase text-violet-hi mb-4">Start today</p>
+    <h2 class="font-space text-[clamp(2rem,4.5vw,3.5rem)] font-bold tracking-[-0.035em] leading-[1.1] mb-5">
+      Stop guessing.<br>
+      <span class="bg-gradient-to-r from-violet-hi to-teal bg-clip-text text-transparent">Start understanding.</span>
+    </h2>
+    <p class="text-text-sub text-base mb-10 leading-[1.7]">
+      Free, open source, with no hidden subscriptions.<br>
+      Take your financial management to the next level.
+    </p>
+    <div class="flex gap-3 justify-center flex-wrap">
+      <a href="#" class="font-space text-base font-semibold text-white bg-gradient-to-br from-violet-hi to-violet py-3.5 px-8 rounded-xl shadow-[0_0_32px_rgba(139,26,139,0.35)] hover:opacity-90 hover:-translate-y-0.5 hover:shadow-[0_0_48px_rgba(139,26,139,0.5)] transition-all no-underline">Create your account →</a>
+      <a href="https://github.com/Chrisiisx/Neurona" target="_blank" class="font-space text-base font-medium text-text-sub border border-white/10 py-3.5 px-8 rounded-xl hover:border-white/30 hover:text-[#e8e8e8] transition-all no-underline">Self-hosting guide</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Neural canvas animation
+  const canvas = document.getElementById('neural-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+  const NODE_COUNT = 55;
+  const VIOLET = '#8B1A8B';
+  const TEAL   = '#00E5CC';
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function initNodes() {
+    nodes = Array.from({ length: NODE_COUNT }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      r: Math.random() * 1.8 + 0.8,
+      pulse: Math.random() * Math.PI * 2,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      n.pulse += 0.018;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+    });
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        if (d < 140) {
+          const alpha = (1 - d / 140) * 0.4;
+          const t = (nodes[i].pulse + nodes[j].pulse) * 0.5;
+          const isViolet = (i + j) % 3 !== 0;
+          const col = isViolet ? VIOLET : TEAL;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = col;
+          ctx.globalAlpha = alpha * (0.7 + 0.3 * Math.sin(t));
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+
+    nodes.forEach((n, i) => {
+      const pulse = 0.7 + 0.3 * Math.sin(n.pulse);
+      const col = i % 5 === 0 ? TEAL : VIOLET;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * pulse, 0, Math.PI * 2);
+      ctx.fillStyle = col;
+      ctx.globalAlpha = 0.7 * pulse;
+      ctx.fill();
+    });
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  initNodes();
+  draw();
+  window.addEventListener('resize', () => { resize(); initNodes(); });
+
+  // Step hover interaction
+  document.querySelectorAll('.step').forEach(step => {
+    step.addEventListener('mouseenter', function() {
+      document.querySelectorAll('.step').forEach(s => {
+        s.classList.remove('active');
+        s.querySelector('span:first-child')?.classList?.remove('text-teal');
+        s.querySelector('span:first-child')?.classList?.add('text-text-muted');
+        s.querySelector('div div:first-child')?.classList?.remove('text-[#e8e8e8]');
+      });
+      this.classList.add('active');
+      this.querySelector('span:first-child')?.classList?.add('text-teal');
+      this.querySelector('span:first-child')?.classList?.remove('text-text-muted');
+      this.querySelector('div div:first-child')?.classList?.add('text-[#e8e8e8]');
+    });
+  });
+</script>
+{% endblock %}
